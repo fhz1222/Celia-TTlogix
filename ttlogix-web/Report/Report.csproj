@@ -1,0 +1,94 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="DeliveryDocketReportEuro.rpt" />
+    <None Remove="DeliveryDocketReportWithPIDEuro.rpt" />
+    <None Remove="InboundDiscrepancyReport.rpt" />
+    <None Remove="InboundLocationReport.rpt" />
+    <None Remove="InboundReport.rpt" />
+    <None Remove="LoadingDeliveryDocket.rpt" />
+    <None Remove="LoadingDeliveryDocket_HU.rpt" />
+    <None Remove="LoadingOutboundReportEuro.rpt" />
+    <None Remove="LoadingOutboundReportEuroWHS.rpt" />
+    <None Remove="LoadingPickingInstructionReportRFEuro.rpt" />
+    <None Remove="LoadingReport.rpt" />
+    <None Remove="PackingListReport.rpt" />
+    <None Remove="PickingInstructionReportRFEuro.rpt" />
+    <None Remove="PickingListReport.rpt" />
+    <None Remove="PickingListReportEU.rpt" />
+    <None Remove="StockTransferReportEU.rpt" />
+    <None Remove="UserReport.rpt" />
+    <None Remove="WarehouseInNote.rpt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="DeliveryDocketReportEuro.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeliveryDocketReportWithPIDEuro.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InboundLocationReport.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InboundReport.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingDeliveryDocket.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingDeliveryDocket_HU.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingOutboundReportEuro.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingOutboundReportEuroWHS.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingPickingInstructionReportRFEuro.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingReport.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackingListReport.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PickingInstructionReportRFEuro.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PickingListReportEU.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="PickingListReport.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="InboundDiscrepancyReport.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockTransferReportEU.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserReport.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="WarehouseInNote.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

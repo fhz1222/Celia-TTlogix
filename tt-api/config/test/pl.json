@@ -1,0 +1,43 @@
+{
+  "ClientId": "TTLogixApi",
+  "ClientSecret": "a0f6a1e8-8d91-4a89-bbf2-2e9e60ffabf9",
+
+  "ConnectionStrings": {
+    "Database": "server=10.190.26.21;Database=TEST_VMI_POLAND;user id=ttlogix_web;password=___vmi.db.password___;Application Name=app-ttlogix-api;"
+  },
+  "OwnerCode": "TESAP",
+
+  "FeatureFlags": {
+    "InvoiceRequest": true,
+    "InboundReversal": true,
+    "StockTransferReversal": true,
+    "Customers": true,
+    "CompanyProfile": true,
+    "StockTake": true,
+    "Registration": true
+  },
+
+  "TTNotifications": {
+    "ClientId": "NotificationService",
+    "Secret": "ce5347f9-3aa0-4a93-b570-63acdc7c827d",
+    "Url": "http://10.190.26.18/testing_PL_notifications/"
+  },
+
+  "ApplicationInsights": {
+    "ConnectionString": "InstrumentationKey=635266dc-fc0d-4dd5-8326-f7e36b678747;IngestionEndpoint=https://westeurope-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westeurope.livediagnostics.monitor.azure.com/"
+  },
+
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    },
+    "ApplicationInsights": {
+      "LogLevel": {
+        "Default": "Information",
+        "Microsoft": "Warning"
+      }
+    }
+  },
+  "AllowedHosts": "*"
+}

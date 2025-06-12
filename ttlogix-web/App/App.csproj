@@ -1,0 +1,106 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+    <RootNamespace>TT</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <UserSecretsId>be083704-9c26-4078-9f5e-6baba7f3070e</UserSecretsId>
+	<Version>1.10.8.0</Version> 
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'App' " />
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.14" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.14" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="6.0.14" />
+    <PackageReference Include="NLog" Version="5.1.2" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.2.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="VueCliMiddleware" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.14" />
+    <PackageReference Include="Yarp.ReverseProxy" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Content Remove="$(SpaRoot)**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Controllers\Controllers.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\DB\DB.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
+  
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="yarn install --ignore-engines" />
+  </Target>
+
+  <Target Name="CopyReportStuff" AfterTargets="Build">
+    <ItemGroup>
+      <ReportFiles Include="$(SolutionDir)Report\*.rpt" />
+    </ItemGroup>
+    <MakeDir Directories="$(TargetDir)\Report" Condition="!Exists('$(TargetDir)\Report')" />
+    <Copy SourceFiles="@(ReportFiles)" DestinationFolder="$(TargetDir)\Report\" />
+    <MakeDir Directories="$(PublishDir)\Report" Condition="!Exists('$(PublishDir)\Report')" />
+    <Copy SourceFiles="@(ReportFiles)" DestinationFolder="$(PublishDir)\Report\" />
+
+    <!--MSBuild Targets="restore" Projects="$(SolutionDir)ReportWrapper\ReportWrapper.csproj" Properties="Configuration=$(Configuration);Platform=$(Platform)" ContinueOnError="ErrorAndContinue" StopOnFirstFailure="false" SkipNonexistentTargets="true">
+         <Output TaskParameter="TargetOutputs" ItemName="BuildOutputPaths" />
+      </MSBuild-->
+    <CreateItem Include="%(BuildOutputPaths.Identity)">
+      <Output ItemName="BuildOutputs" TaskParameter="Include" />
+    </CreateItem>
+    <CreateItem Include="%(BuildOutputs.RelativeDir)*.dll;%(BuildOutputs.RelativeDir)*.pdb;%(BuildOutputs.RelativeDir)*.exe;%(BuildOutputs.RelativeDir)*.exe.config">
+      <Output ItemName="Filter" TaskParameter="Include" />
+    </CreateItem>
+    <ItemGroup>
+      <ReportWrapperFiles Include="$(SolutionDir)ReportWrapper\bin\$(Configuration)\*.*" />
+    </ItemGroup>
+    <MakeDir Directories="$(TargetDir)\ReportWrapper" Condition="!Exists('$(TargetDir)\ReportWrapper')" />
+    <Copy SourceFiles="@(ReportWrapperFiles)" DestinationFolder="$(TargetDir)\ReportWrapper" />
+    <MakeDir Directories="$(PublishDir)\ReportWrapper" Condition="!Exists('$(PublishDir)\ReportWrapper')" />
+    <Copy SourceFiles="@(ReportWrapperFiles)" DestinationFolder="$(PublishDir)\ReportWrapper" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="yarn install --ignore-engines" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="yarn run build" />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+</Project>

@@ -1,0 +1,74 @@
+{
+  "Api": {
+    "ClientId": "TTLogixApi",
+    "Secret": "556176e5-0da4-4574-9371-8f74f765bd66"
+  },
+
+  "AppSettings": {
+    "Secret": "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING",
+    "OwnerCode": "TESAH",
+    "SAPFactories": [""]
+  },
+
+  "ConnectionStrings": {
+    "Database": "server=10.190.26.21;Database=TEST_VMI_HUNGARY;user id=ttlogix_web;password=___vmi.db.password___;Application Name=app-ttlogix-web;",
+    "MRPDatabase": "server=10.190.26.21;Database=TEST_VMI_MRP_HUNGARY;user id=ttlogix_web;password=___vmi.db.password___;Application Name=app-ttlogix-web;"
+  },
+
+  "iLogConnect": {},
+
+  "ApplicationInsights": {
+    "ConnectionString": "InstrumentationKey=635266dc-fc0d-4dd5-8326-f7e36b678747;IngestionEndpoint=https://westeurope-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westeurope.livediagnostics.monitor.azure.com/"
+  },
+
+  "ReverseProxy": {
+    "Routes": {
+      "reportroute": {
+        "ClusterId": "reportcluster",
+        "Match": {
+          "Path": "/api/report/{**remainder}"
+        },
+        "Transforms": [{ "PathPattern": "/report/{**remainder}" }]
+      },
+      "newapiroute": {
+        "ClusterId": "newapicluster",
+        "Match": {
+          "Path": "/api/new-api/{**reminder}"
+        }
+      }
+    },
+    "Clusters": {
+      "reportcluster": {
+        "Destinations": {
+          "ReportApiUrl": {
+            "Address": "http://10.190.26.18/testing_HU_reports/"
+          }
+        }
+      },
+      "newapicluster": {
+        "Destinations": {
+          "NewApiUrl": {
+            "Address": "http://10.190.26.18/testing_HU_ttlogixapi/"
+          }
+        }
+      }
+    }
+  },
+
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    },
+
+    "ApplicationInsights": {
+      "LogLevel": {
+        "Default": "Information",
+        "Microsoft": "Warning"
+      }
+    }
+  },
+
+  "AllowedHosts": "*"
+}

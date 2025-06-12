@@ -1,0 +1,1280 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Controllers</name>
+    </assembly>
+    <members>
+        <member name="M:TT.Controllers.Controllers.AccessGroupsController.GetAccessGroups(TT.Core.QueryFilters.AccessGroupFilter)">
+            <summary>
+            Get simple list of access groups
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.AccessGroupsController.GetAccessGroup(System.String)">
+            <summary>
+            Get access group
+            </summary>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.AccessGroupsController.PatchAccessGroup(System.String,TT.Services.Models.AccessGroupDto)">
+            <summary>
+            Update access group
+            </summary>
+            <param name="code"></param>
+            <param name="accessGroup"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.AccessGroupsController.CreateAccessGroup(TT.Services.Models.AccessGroupAddDto)">
+            <summary>
+            Create access group
+            </summary>
+            <param name="accessGroup"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.AccessGroupsController.ToggleStatus(System.String)">
+            <summary>
+            Activate/Deactivate user
+            </summary>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.AccessGroupsController.GetPrivilegesTree(System.String)">
+            <summary>
+            Get privileges tree
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.AccessGroupsController.UpdatePrivilegesTree(System.String,TT.Services.Models.SystemModuleTreeDto)">
+            <summary>
+            Update privileges tree
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.CountriesController.Get">
+            <summary>
+            Get list of countries
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.CurrenciesController.Get">
+            <summary>
+            Get list of currencies
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.CustomersController.Get">
+            <summary>
+            Get list of customers for current user's WHSCode
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.EKanbansController.GetEKanbanListForEurope(TT.Core.QueryFilters.EKanbanListQueryFilter)">
+            <summary>
+            gets the list of eKanbans for Europe; filtered and paged (main grid > btnEKanban)
+            original endpoints: OutboundBizFacade.cs > GetEKanbanListForEurope(DataTable p_dtFilter, DataTable p_dtOrderBy), 
+            </summary>
+            <param name="queryFilter"></param>
+            <returns>EKanbanListDto</returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.EKanbansController.HasEkanban(System.String)">
+            <summary>
+            Checks if there are any eKanban records for the JobNo
+            original endpoint: GetEKanbanListByJobNo(DataTable p_dtFilter, DataTable p_dtOrderBy)
+            changed from list to bool value
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.EKanbansController.GetEKanbanPartsStatusByOwnershipEHP(System.String)">
+            <summary>
+            original endpoint: ImportEKanbanConfirmation: oStorageCtrl.GetEKanbanPartsStatusByOwnershipEHP(ref oFilter, ref m_dstDataSet);
+            - does not go through web service, directly from TT-Logix
+            </summary>
+            <param name="orderNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.EKanbansController.GetEKanbanPartsStatusForEKanbanCPart(System.String)">
+            <summary>
+            original endpoint: ImportEKanbanConfirmation: oStorageCtrl.GetEKanbanPartsStatusForCPart(ref oFilter, ref m_dstDataSet);
+            - does not go through web service, directly from TT-Logix
+            </summary>
+            <param name="orderNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.EKanbansController.GetEKanbanPartsStatusByOwnership(System.String)">
+            <summary>
+            original endpoint: ImportEKanbanConfirmation: oStorageCtrl.GetEKanbanPartsStatusByOwnership(ref oFilter, ref m_dstDataSet);
+            - does not go through web service, directly from TT-Logix
+            </summary>
+            <param name="orderNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.EKanbansController.GetEKanbanPartsStatusForCPart(System.String)">
+            <summary>
+            original endpoint: ImportEKanbanConfirmation: oStorageCtrl.GetEKanbanPartsStatusForCPart(ref oFilter, ref m_dstDataSet);
+            - does not go through web service, directly from TT-Logix
+            </summary>
+            <param name="orderNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.EKanbansController.GetEKanbanPartsStatusForCPartWithoutExt(System.String)">
+            <summary>
+            original endpoint: ImportEKanbanConfirmation: oStorageCtrl.GetEKanbanPartsStatusForCPartWithoutExt(ref oFilter, ref m_dstDataSet);
+            - does not go through web service, directly from TT-Logix
+            </summary>
+            <param name="orderNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.EKanbansController.GetEKanbanDataToDownload(System.String)">
+            <summary>
+            get text file with formatted eKanban data
+            no endpoint, data received from DataDownloadController.GetEKanbanData(m_strJobNo,out m_arySendData))
+            </summary>
+            <param name="orderNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.EKanbansController.CheckEKanbanFulfillable(TT.Services.Models.OrderNosDto)">
+            <summary>
+            check if we can  perform import eKanban operation.
+            original endpoint: CheckEKanbanFulfillable
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.EKanbansController.EKanbanCheck(TT.Services.Models.OrderNosDto)">
+            <summary>
+            check if we can  perform import eKanban operation.
+            original endpoint: CheckEKanbanFulfillable
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.EStockTransfersController.GetEStockTransferList(TT.Core.QueryFilters.EStockTransferListQueryFilter)">
+            <summary>
+            gets the list of eStockTransfers - for Hungary
+            </summary>
+            <param name="queryFilter"></param>
+            <returns>EKanbanListDto</returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.EStockTransfersController.GetEStockTransferPartsStatusByOwnership(System.String)">
+            <summary>
+            Get the list of EStockTransfer for checking
+            for TESAH (Hungary)
+            originally the endpoint for ImportEStockTransferConfirmation grid
+            </summary>
+            <param name="orderNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.EStockTransfersController.HasAnyEStockTransferDiscrepancy(System.String)">
+            <summary>
+            check if there are any discrepancies in the eStock
+            original endpoint: l_oInventoryCtrl.GetEStockTransferDiscrepancyList
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.EStockTransfersController.EStockTransferCheck(TT.Services.Models.OrderNosDto)">
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.GetInbounds(TT.Core.QueryFilters.InboundListQueryFilter)">
+            <summary>
+            Get the list of inbounds
+            </summary>
+            <param name="queryFilter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.GetInbound(System.String)">
+            <summary>
+            Get inbound for jobNo
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.GetInboundDetails(System.String)">
+            <summary>
+            Get inbound detail rows for job no, include the price values
+            original endpoint: GetInboundDetailListWithPrice
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.CreateInboundManual(TT.Services.Models.InboundManualDto)">
+            <summary>
+            Create manual inbound
+            </summary>
+            <param name="inboundDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.PatchInbound(System.String,TT.Services.Models.InboundDto)">
+            <summary>
+            Updates inbound header
+            </summary>
+            <param name="jobNo"></param>
+            <param name="inboundDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.CreateInboundDetail(TT.Services.Models.InboundDetailEntryAddDto)">
+            <summary>
+            Add inbound detail row (new Pkg Entry)
+            original endpoint and logic in AddPkgEntry
+            </summary>
+            <param name="inboundDetail"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.ModifyInboundDetail(TT.Services.Models.InboundDetailEntryModifyDto)">
+            <summary>
+            Update inbound detail row (new Pkg Entry)
+            original endpoint and logic in AddPkgEntry
+            </summary>
+            <param name="inboundDetail"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.GetASNsToImport(TT.Core.QueryFilters.ASNListQueryFilter)">
+            <summary>
+            get list of ASNs to import
+            original endpoint: m_oWebServiceCtrl.GetASNList
+            </summary>
+            <param name="queryFilter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.GetASNDetails(System.String)">
+            <summary>
+            Gets the list of asns
+            </summary>
+            <param name="asnNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.ImportASN(System.String)">
+            <summary>
+            Import selected ASN
+            Note: import by Container No logic made no sense so it is replaced with just 1:1 import of selected ASN
+            </summary>
+            <param name="asnNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.ImportFile(TT.Services.Models.InboundUploadFileDto)">
+            <summary>
+            Import selected File
+            </summary>
+            <param name="req"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.CancelInbound(System.String)">
+            <summary>
+            Cancel inbound
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.GetIDTAsCSV(System.String)">
+            <summary>
+            Download IDT CSV file
+            original: InboundDetail => btnDownloadIDT_Click
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.IncreasePkgQty(TT.Services.Models.AddPkgQtyDto)">
+            <summary>
+            Increase the no of packages for inbound line item
+            original endpoint: IncreasePkgQty
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.RemovePIDs(TT.Services.Models.RemovePIDsDto)">
+            <summary>
+            Remove storage PID(s) for the specified inboud record JobNo and LineItem
+            remove selected PIDs or all PIDs for the selected line (RemoveAll=true)
+            original endpoint: RemovePID
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.GetLocationReport(System.String)">
+            <summary>
+            Get LocationReport
+            </summary>
+            <param name="jobNo">Inbound jobNo</param>
+            <returns>file stream</returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.GetInboundReport(System.String)">
+            <summary>
+            Get InboundReport
+            </summary>
+            <param name="jobNo">Inbound jobNo</param>
+            <returns>file stream</returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.GetWarehouseInNoteReport(System.String)">
+            <summary>
+            Get WarehouseInNoteReport
+            </summary>
+            <param name="jobNo">Inbound jobNo</param>
+            <returns>file stream</returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InboundsController.GetDiscrepancyReport(System.String)">
+            <summary>
+            Get DiscrepancyReport
+            </summary>
+            <param name="jobNo">Inbound jobNo</param>
+            <returns>file stream</returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InventoryController.GetCustomerInventoryProductCodeMap(System.String)">
+            <summary>
+            Get customer inventory summary data
+            original endpoint: OutboundDetailItem > GetCustomerInventoryControl() (l_oCustomerCtrl.DisplayInventoryControl, l_oRegistrationCtrl.GetInstance)
+            </summary>
+            <param name="customerCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.InventoryController.GetCustomerInventoryControlCodeMap(System.String)">
+            <summary>
+            Gets the correct labels depending on customer code for Inbound detail table
+            Original method: InboundDetail: LoadInventoryControl
+            </summary>
+            <param name="customerCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LabelPrinterController.Get">
+            <summary>
+            Get list of printers
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.GetLoadings(TT.Core.QueryFilters.LoadingListQueryFilter)">
+            <summary>
+            Get the list of loadings
+            </summary>
+            <param name="queryFilter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.TruckArrival(System.String)">
+            <summary>
+            Set truck arrival to current date
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.TruckDeparture(System.String)">
+            <summary>
+            Set truck departure to current date
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.GetLoading(System.String)">
+            <summary>
+            gets the Loading full object 
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.GetLoadingDetails(System.String)">
+            <summary>
+            gets the Loading detail rows 
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.PostLoading(TT.Services.Models.LoadingAddDto)">
+            <summary>
+            Add loading header
+            </summary>
+            <param name="loadingDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.AddLoadingFromOutbound(TT.Services.Models.AddLoadingFromOutboundDto)">
+            <summary>
+            Add loading header and details from the attached outbound job numbers
+            </summary>
+            <param name="loadingDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.PatchLoading(System.String,TT.Services.Models.LoadingDto)">
+            <summary>
+            Updates the loading object and some corresponding entities
+            replaces the UpdateLoading and UpdateLoadingDetail calls altogether, called from LoadingDetail.SaveLoadingInformation 
+            </summary>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.GetBondedStockJobNosWithoutCommInv(System.String)">
+            <summary>
+            Get job nos of stock on storage marked as bonded with no CommInvNo
+            previously used by LoadingDetail btnComplete_Click m_oWebServiceCtrl.CheckBondedStockBeforeLoading
+            if any jobNos are returned, they should be formatted in the following message:
+            l_strMsg = $"No Commercial Invoice No. fill in for following Outbound job: {string.Join(", ", jobNos)}");
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.ConfirmLoading(System.String)">
+            <summary>
+            Confirm the loading
+            api ref: ConfirmLoading
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.CancelLoading(System.String)">
+            <summary>
+            Set loading as cancelled
+            no api reference
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.GetLoadingEntryList(System.String)">
+            <summary>
+            Gets the list of orders that can be selected to create loading detail 
+            original method name: GetLoadingEntryListForEurope
+            </summary>
+            <param name="customerCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.BatchCreateLoadingDetail(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Create loading detail rows based on selected order nos
+            Original method name: BatchInsertLoadingDetail 
+            </summary>
+            <param name="jobNo">Loading jobNo</param>
+            <param name="orderNos">Selected OrderNos</param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.GetLoadingReport(System.String)">
+            <summary>
+            Get LoadingReport
+            </summary>
+            <param name="jobNo">Loading jobNo</param>
+            <returns>file stream</returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.GetDeliveryDocketReport(System.String)">
+            <summary>
+            Get DeliveryDocketReport
+            </summary>
+            <param name="jobNo">Loading jobNo</param>
+            <returns>file stream</returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.GetLoadingPickingInstructionReport(System.String)">
+            <summary>
+            Get LoadingPickingInstructionReport
+            </summary>
+            <param name="jobNo">Loading jobNo</param>
+            <returns>file stream</returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.GetOutboundReport(System.String)">
+            <summary>
+            Get OutboundReport filered by loading jobNo
+            </summary>
+            <param name="jobNo">Loading jobNo</param>
+            <returns>file stream</returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.LoadingsController.GetDeliveryDocketCombinedReport(System.String)">
+            <summary>
+            Get DeliveryDocketCombinedReport
+            </summary>
+            <param name="jobNo">Loading jobNo</param>
+            <returns>file stream</returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.GetOutbounds(TT.Core.QueryFilters.OutboundListQueryFilter)">
+            <summary>
+            gets the list of outbounds for the main grid; filtered and paged
+            original endpoint: OutboundBizFacade.cs > GetOutboundList(DataTable p_dtFilter, DataTable p_dtOrderBy)
+            </summary>
+            <param name="queryFilter"></param>
+            <returns>OutboundListDto</returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.GetOutbound(System.String)">
+            <summary>
+            gets the outbound full object
+            original endpoint: GetOutbound(Request.TT_Outbound p_oOutbound)
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.GetOutboundDetailList(System.String)">
+            <summary>
+            original endpoint: GetOutboundDetailList(DataTable p_dtFilter, DataTable p_dtOrderBy)
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.GetOutboundDetailWithReceivedQtyList(System.String)">
+            <summary>
+            original endpoint: GetOutboundDetailWithReceivedQtyList(DataTable p_dtFilter, DataTable p_dtOrderBy)
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.GetOutboundPickableList(TT.Core.QueryFilters.OutboundPickableListQueryFilter)">
+            <summary>
+            gets the pickable list with quantities for all product codes for part masters for outbound detail item
+            used in "Pick Entry" method on OutboundDetailItem
+            original endpoint:l_oOutboundController.GetOutboundPickableList and l_oOutboundController.GetOutboundPickableListManual
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.CancelOutbound(System.String)">
+            <summary>
+            Cancel Outbound record
+            original endpoint: CancelOutbound(string p_strJobNo, string p_strUserCode)
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.UpdateOutboundStatus(System.String)">
+            <summary>
+            changes the outbound status
+            original endpoint: UpdateOutboundStatus(Request.TT_Outbound p_oOutbound, byte p_byteOwnership, double p_dblMasterPIDQty)
+            #2803 - this has been amended so it only changes the statuses when called; 
+            should not really be called itself, but individually on each of the endpoints as required
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.CreateOutboundManual(TT.Services.Models.OutboundManualDto)">
+            <summary>
+            creates outbound and correcsponding EKanbanHeader
+            original endpoint: CreateOutboundManual(Request.TT_Outbound p_oOutbound, string p_strManualType)
+            </summary>
+            <param name="outboundDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.PatchOutbound(System.String,TT.Services.Models.OutboundDto)">
+            <summary>
+            patches the outbound record
+            original endpoint: UpdateOutbound(Request.TT_Outbound p_oOutbound)
+            </summary>
+            <param name="jobNo"></param>
+            <param name="outboundDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.DeleteOutboundDetail(System.String,System.Int32)">
+            <summary>
+            Delete outbound detail line and change the inventory quantities 
+            original endpoint: DeleteOutboundDetailManual(Request.TT_OutboundDetail p_oOutboundDetail), DeleteOutboundDetail(Request.TT_OutboundDetail p_oOutboundDetail), 
+            also it does the check for the existing picking lists.
+            note DeleteOutboundDetail and DeleteOutboundDetailManual do the same job.
+            </summary>
+            <param name="jobNo"></param>
+            <param name="lineItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.ImportEKanbanEUCPart(System.String,System.String)">
+            <summary>
+            imports eKanban data
+            original endpoint:ImportEKanbanEUCPart(string strOrderNo, string strFactoryID, ref string strJobNo,string p_strWHSCode, string p_strUserCode)
+            </summary>
+            <param name="orderNo"></param>
+            <param name="factoryId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.CompleteOutboundEurope(System.String)">
+            <summary>
+            Cargo Out operation for EKanban = TESA
+            original endpoint: GetListResult CompleteOutboundEurope(ref string[] p_strJobNo, string p_strUserCode)
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.CompleteDiscrepancyOutbound(System.String)">
+            <summary>
+            Complete done from OutboundDetails
+            a simple change of Outbound status to Completed.
+            original endpoint: OutboundDetails btnComplete_Click CompleteDiscrepancyOutbound
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.CompleteOutboundReturn(System.String)">
+            <summary>
+            Cargo Out operation for EKAnban  RefNo = TTK
+            original endpoint: GetListResult CompleteOutboundReturn(ref string[] p_strJobNo, string p_strUserCode)
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.CompleteOutboundManual(System.String)">
+            <summary>
+            Cargo Out operation for jobType = manual
+            original endpoint: GetListResult CompleteOutboundManual(ref string[] p_strJobNo, string p_strUserCode)
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.CargoInTransit(TT.Services.Models.JobNosDto)">
+            <summary>
+            Cargo Out operation for eKanban, not TESA and not TTK
+            original endpoint: CargoInTransit(ref string[] p_strJobNo, string p_strUserCode)
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.CancelAllocation(TT.Services.Models.CancelAllocationDto)">
+            <summary>
+            cancels allocation for selected parts (the same method for TESA and non-TESA)
+            original endpoint: CancelAllocationCPart(ref DataSet p_DataSet, Request.TT_OutboundDetail p_oOutboundDetail) and
+            CancelAllocation(ref DataSet p_DataSet, Request.TT_OutboundDetail p_oOutboundDetail)
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.AddNewOutboundDetail(TT.Services.Models.OutboundDetailAddDto)">
+            <summary>
+            create ountbound detail entry for outbound
+            original endpoint: OutboundDetailItem > PickEntry inline method (no endpoint)
+            AddNewOutboundDetail, AddNewOutboundDetailManual (both in the end used the same method)
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.UndoPicking(TT.Services.Models.UndoPickEntryDto)">
+            <summary>
+            undo pick entry for outbound
+            original endpoint: OutboundDetailItem > l_oPickingListController.UndoPicking (no endpoint, btn_Unpick)
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.SplitOutbound(TT.Services.Models.SplitOutboundDto)">
+            <summary>
+            split the outbound rows by creating a new outbound for selected items
+            original endpoint: SplitOutbound(string p_strJobNo, System.Data.DataSet p_dstPicking, bool p_bOwnershipSplit, double p_dblMasterPIDQty, string p_strUserCode, string p_strSupplierName) 
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.SplitOutboundByInboundJobNo(System.String)">
+            <summary>
+            split the outbound rows by grouping them by inbound job no.
+            Replaces the calculations made both in the form and on the API call SplitOutboundWithSupplierName
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.SplitOutboundByInboundDate(System.String)">
+            <summary>
+            split the outbound rows by grouping them by inbound date.
+            Replaces the calculations made both in the form and on the API call SplitOutboundWithSupplierName
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.SplitOutboundByOwnership(System.String)">
+            <summary>
+            split the outbound by grouping picking list items by ownership.
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.ReleaseBondedStock(System.String,TT.Services.Models.OutboundDto)">
+            <summary>
+            Release Bonded
+            original endpoint: ReleaseBondedStock(ref string[] p_strJobNo, string p_strUserCode)
+            also combines the UpdateOutbound(..) call that follows
+            </summary>
+            <param name="jobNo"></param>
+            <param name="outboundDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.CompleteWHSTransfer(System.String)">
+            <summary>
+            Complete warehouse transfer
+            original endpoint: CompleteWHSTransfer
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.GetOutboundQRCodeImage(System.String)">
+            <summary>
+            Get Outbound QRCode Image
+            original endpoint: combines 2 methods: GetOutboundQRCode and AddNewPickingQRCode
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.DownloadEDTToCSV(System.String)">
+            <summary>
+            Returns a csv file with EDT
+            Original endpoint: DownloadEDTToCSV, split into separate controllers for outbound and stock transfer
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.OutboundsController.DispatchWarehouseTransfer(System.String)">
+            <summary>
+            Dispatches a TESAG warehouse transfer outbound
+            </summary>
+            <param name="jobNo">Warehouse transfer job number</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:TT.Controllers.Controllers.OutboundsController.GetAllowedOutboundCreationMethods" -->
+        <member name="M:TT.Controllers.Controllers.PackageTypesController.Get">
+            <summary>
+            Get list of package types
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.PartMasterController.GetPartMasterListBySupplier(System.String,System.String)">
+            <summary>
+            Gets the list of part masters for the customer code and supplier
+            used in InboundEntry product list dropdown
+            </summary>
+            <param name="customerCode"></param>
+            <param name="supplierID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.PartMasterController.GetPartMasterList(TT.Core.QueryFilters.PartMasterListQueryFilter)">
+            <summary>
+            Gets the list of part masters for the customer code
+            used in PartsMaster screen
+            </summary>
+            <param name="queryFilter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.PartMasterController.GetPartMaster(System.String,System.String,System.String)">
+            <summary>
+            Gets the details for given part
+            used in PartsMaster screen => part details
+            </summary>
+            <param name="customerCode"></param>
+            <param name="productCode1"></param>
+            <param name="supplierID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.PartMasterController.GetUOMListWithDecimal(System.String)">
+            <summary>
+            Gets the list of UOMs for dropdowns
+            used in PartsMaster module
+            original: CTT_RegistrationController => LoadUOMWithDecimalList
+            </summary>
+            <param name="customerCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.PartMasterController.PatchPartMaster(TT.Services.Models.PartMasterDto)">
+            <summary>
+            Updates the part master object
+            </summary>
+        </member>
+        <member name="M:TT.Controllers.Controllers.PartMasterController.PostPartMaster(TT.Services.Models.PartMasterDto)">
+            <summary>
+            Add part master
+            </summary>
+            <param name="partMasterDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.PickingListsController.GetPickingListWithUOM(System.String,System.Nullable{System.Int32})">
+            <summary>
+            Get picking list records for jobNo
+            original endpoint: GetPickingListWithUOM(DataTable p_dtFilter, ref DataSet p_DataSet, DataTable p_dtOrderBy)
+            </summary>
+            <param name="jobNo"></param>
+            <param name="lineItem">optional</param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.PickingListsController.HasPickingLists(System.String,System.Int32)">
+            <summary>
+            Check if there are any picking lists for the job/line item
+            original endpoint: OutboundDetail btnModify_Click l_oPickingListCtrl.GetPickingList
+            </summary>
+            <param name="jobNo"></param>
+            <param name="lineItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.PickingListsController.GetPickingDataToDownload(TT.Core.QueryFilters.PickingListToDownloadQueryFilter)">
+            <summary>
+            get text file with formatted picking data
+            no endpoint, data received from DataDownloadController.GetPickingData(m_strJobNo, m_stProductionLine, m_iPickingItemType, out m_arySendData))
+            </summary>
+            <param name="queryFilter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.PickingListsController.AutoAllocate(TT.Services.Models.AllocationDto)">
+            <summary>
+            Auto Allocate operation for particular OutboundDetail JobNo/LineItem
+            original endpoint: replaced 2 endpoints with one method
+            AutoAllocatePickingListItem and AutoAllocatePickingListItemCPart
+            called from OutboundDetail and OutboundPickingList
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.PickingListsController.Allocate(System.Collections.Generic.IEnumerable{TT.Services.Models.PickingListAllocateDto})">
+            <summary>
+            Allocate picking list
+            original endpoint: AllocatePickingListItem
+            </summary>
+            <param name="pickingList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.PickingListsController.UnAllocate(System.Collections.Generic.IList{TT.Services.Models.UndoAllocationDto})">
+            <summary>
+            undo allocation for specific jobno/lineitem
+            original endpoint:  UnAllocatedPickingListItem(string p_strJobNo, int p_intLineItem) (OutboundDetail > btnUndoAllocation_Click) 
+            </summary>
+            <param name="unallocationData">Contains JobNo (required), LineItem (required) and SeqNo (optional)</param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.PriceMastersController.UpdatePriceMasterOutbound(TT.Services.Models.PriceMasterOutboundUpdateDto)">
+            <summary>
+            updates price master and storage detail selling price
+            original endpoint: Outbound detail > Update Stock Value (btnUpdatePriceMaster_Click)
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.PriceMastersController.UpdatePriceMasterInbound(TT.Services.Models.PriceMasterInboundUpdateDto)">
+            <summary>
+            updates price master
+            original endpoint: Inbound detail > Update Price Master (btnUpdatePrice_Click)
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.RegistrationController.PrintLocationLabels(TT.Services.Models.PrintLocationLabelsDto)">
+            <summary>
+            Print Location labels on selected printer
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.RegistrationController.GetLocationLabels(TT.Services.Models.GetLocationQRsDto)">
+            <summary>
+            Get Location labels
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.SampleProxyController.TestReport">
+            <summary>
+            Example how to call some method from external proxy configuration.
+            It just calls the API that generates the report and sends result stream (file) as the response but in general the result can be processed before sending it back, 
+            or it is possible to pass some additional data to the request
+            </summary>
+            <returns>report file</returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.SettingsController.Get">
+            <summary>
+            Get list of settings
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:TT.Controllers.Controllers.StockTransferController">
+            <summary>
+            All endpoints related to Stock Transfer operations
+            </summary>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StockTransferController.GetStockTransferList(TT.Core.QueryFilters.StockTransferListQueryFilter)">
+            <summary>
+            Get stock transfer records displayed on the ST main list
+            </summary>
+            <param name="queryFilter">filtering and paging parameters</param>
+            <returns>Stock transfer list DTO containing paging information and data records</returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StockTransferController.GetStockTransfer(System.String)">
+            <summary>
+            Get stock transfer data record for particular JobNo
+            </summary>
+            <param name="jobNo">ST JobNo</param>
+            <returns>Stock transfer DTO</returns>
+            <response code="400">JobNo is required</response>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StockTransferController.GetStockTransferDetailList(System.String)">
+            <summary>
+            Get stock transfer details list extended with UOM and storage data
+            </summary>
+            <param name="jobNo">ST JobNo</param>
+            <returns>Stock transfer detail DTO list</returns>
+            <response code="400">JobNo is required</response>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StockTransferController.GetStockTransferSummaryList(System.String)">
+            <summary>
+            Get stock transfer summary list
+            </summary>
+            <param name="jobNo">ST JobNo</param>
+            <returns>Stock Transfer summary DTO list</returns>
+            <response code="400">JobNo is required</response>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StockTransferController.CreateStockTransfer(System.String)">
+            <summary>
+            Create Stock Transfer entry 
+            </summary>
+            <param name="customerCode">Customer code</param>
+            <returns>Newly created Stock transfer DTO</returns>
+            <response code="400">customerCode is required</response>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StockTransferController.AddStockTransferDetailByPID(TT.Services.Models.StockTransferDetailByPIDDto)">
+            <summary>
+            Add Stock Transfer detail records for selected PIDs
+            </summary>
+            <param name="dto">Data object containing relevant JobNo and a list of PIDs to add</param>
+            <returns>True</returns>
+            <response code="400">Invalid input model data</response>
+            <response code="404">Relevant data record was not found</response>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StockTransferController.DeleteStockTransferDetailByPID(TT.Services.Models.StockTransferDetailByPIDDto)">
+            <summary>
+            Delete Stock Transfer detail records for selected PIDs
+            </summary>
+            <param name="dto">Data object containing relevant JobNo and a list of PIDs to delete</param>
+            <returns>True</returns>
+            <response code="400">Invalid input model data</response>
+            <response code="404">Relevant data record was not found</response>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StockTransferController.DeleteStockTransferDetail(System.String,System.Int32)">
+            <summary>
+            Delete Stock Transfer detail record by line number
+            </summary>
+            <param name="jobNo">ST JobNo</param>
+            <param name="lineItem">Line item to delete</param>
+            <returns>True</returns>
+            <response code="400">Invalid input model data or jobNo parameter is empty</response>
+            <response code="404">Relevant data record was not found</response>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StockTransferController.UpdateStockTransfer(System.String,TT.Services.Models.StockTransferDto)">
+            <summary>
+            Update Stock Transfer entry
+            </summary>
+            <param name="jobNo">ST JobNo</param>
+            <param name="stockTransferDto">ST dto to update</param>
+            <returns>ST DTO updated</returns>
+            <response code="400">Invalid input model data or jobNo parameter is empty</response>
+            <response code="404">Relevant data record was not found</response>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StockTransferController.ImportEKanbanEUCPart(System.String)">
+            <summary>
+            Import eKanban data to Stock Transfer
+            </summary>
+            <param name="orderNo">Order No to import</param>
+            <returns>comma-separated list of JobNos created</returns>
+            <response code="400">JobNo is required</response>
+            <response code="404">Relevant data record was not found</response>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StockTransferController.ImportEKanbanEUCPartMulti(TT.Services.Models.OrderNosDto)">
+            <summary>
+            Import multiple EKanban order numbers to Stock Transfer
+            </summary>
+            <param name="data">List of order nos to import</param>
+            <returns>comma-separated list of JobNos created</returns>
+            <response code="400">Invalid input model data</response>
+            <response code="404">Relevant data record was not found</response>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StockTransferController.ImportEStockTransfer(System.String)">
+            <summary>
+            Imports eStockTransfer data as Stock Transfer
+            </summary>
+            <param name="orderNo">Order No to import</param>
+            <returns>JobNo created</returns>
+            <response code="400">OrderNo is required</response>
+            <response code="404">Relevant data record was not found</response>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StockTransferController.ImportEStockTransferMulti(TT.Services.Models.OrderNosDto)">
+            <summary>
+            Import multiple eStockTransfer order numbers to Stock Transfer
+            </summary>
+            <param name="data">List of order nos to import</param>
+            <returns>comma-separated list of JobNos created</returns>
+            <response code="400">Invalid input model data</response>
+            <response code="404">Relevant data record was not found</response>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StockTransferController.Cancel(System.String)">
+            <summary>
+            Cancel stock transfer
+            </summary>
+            <param name="jobNo">ST JobNo</param>
+            <returns>True</returns>
+            <response code="400">JobNo is required</response>
+            <response code="404">Relevant data record was not found</response>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StockTransferController.Complete(System.String)">
+            <summary>
+            Complete stock transfer
+            </summary>
+            <param name="jobNo">ST JobNo</param>
+            <returns>True</returns>
+            <response code="400">JobNo is required</response>
+            <response code="404">Relevant data record was not found</response>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StockTransferController.SplitByInboundDate(System.String)">
+            <summary>
+            Split stock transfer detail rows by grouping them by inbound date
+            </summary>
+            <param name="jobNo">ST JobNo</param>
+            <returns>True</returns>
+            <response code="400">JobNo is required</response>
+            <response code="404">Relevant data record was not found</response>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:TT.Controllers.Controllers.StockTransferController.GetStockTransferReport(System.String)" -->
+        <member name="M:TT.Controllers.Controllers.StockTransferController.DownloadEDTToCSV(System.String)">
+            <summary>
+            Get Stock Transfer EDT list as csv
+            </summary>
+            <param name="jobNo">ST JobNo</param>
+            <returns>file stream</returns>
+            <response code="400">JobNo is required</response>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StockTransferController.GetAllowedSTFImportMethods">
+            <summary>
+            Returns allowed import methods for Stock Transfers
+            </summary>
+            <returns>AllowedImportMethods dto</returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageController.GetStoragePutawayList(System.String,System.Nullable{System.Int32})">
+            <summary>
+            Gets the storage list of putaway items
+            displayed on the inbound detail screen 
+            displayed on InboundRemovePID screen
+            </summary>
+            <param name="inJobNo">Inbound JobNo</param>
+            <param name="lineItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageController.GetStorageDetailWithPartsInfoList(System.String,System.Int32)">
+            <summary>
+            Gets the storage detail list visible in OutboundPickingList upper part of the screen
+            Shows the list of available items to be picked from storage, for the prededined filter
+            </summary>
+            <param name="jobNo"></param>
+            <param name="lineItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageController.GetSTFStorageDetailList(System.String,System.String,System.String)">
+            <summary>
+            Get available storage for Stock Transfer
+            displayed on Stock Transfer detail > Add PID > Available List 
+            Original path: LoadAvailableTdbg > m_oStorageController.GetSTFStorageDetail 
+            </summary>
+            <param name="jobNo">Stock transfer job no - required</param>
+            <param name="inJobNo">optional</param>
+            <param name="supplierId">optional</param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageController.GetStorageSupplierList(System.String)">
+            <summary>
+            Get the distinct list of suppliers for storage, for selected customer code
+            used in StockTransferDetailEntryEU > LoadSupplierDropDown > GetDistinctStorageSupplier
+            </summary>
+            <param name="customerCode">required</param>
+            <param name="stockTransferJobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageController.GetStorageInJobNosList(System.String,System.String)">
+            <summary>
+            Get the distinct list of InJobNos for storage, for selected customer code
+            used in StockTransferDetailEntryEU > LoadInJobNoDropDown > GetDistinctStorageInJobNo
+            </summary>
+            <param name="customerCode">required</param>
+            <param name="supplierId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageController.HasBondedStock(System.String)">
+            <summary>
+            Check if there are any stock on storage marked as bonded
+            original endpoint: m_oWebServiceCtrl.CheckBondedStock
+            </summary>
+            <param name="outJobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageController.UpdateSellingPrice(TT.Services.Models.UpdateSellingPriceItemsDto)">
+            <summary>
+            Update selling price of multiple items
+            original endpoint: Outbound detail > UpdateSellingPrice (btnCalculateOutboundValue_Click, "Calculate Outbound"
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageController.UpdateBuyingPrice(TT.Services.Models.UpdateBuyingPriceItemDto)">
+            <summary>
+            Update buying price of selected inbound lines
+            original endpoint: InboundDetail.UpdateBuyingPrice (originally not from API)
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageController.PrintStorageLabels(TT.Services.Models.PrintLabelsDto)">
+            <summary>
+            Print PIDs labels on selected printer
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageController.GetExternalQRStorageLabelsForInbound(System.String)">
+            <summary>
+            Get External PIDs labels
+            </summary>
+            <param name="inJobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageController.GetStorageLabels(TT.Services.Models.GetQRsDto)">
+            <summary>
+            Get PIDs labels
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageGroupController.PrintLabels(TT.Services.Models.PrintLabelsDto)">
+            <summary>
+            Print Groups labels on selected printer
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageGroupController.PrintPIDLabels(TT.Services.Models.PrintLabelsDto)">
+            <summary>
+            Print Groups labels on selected printer
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageGroupController.GetGroups(TT.Core.QueryFilters.StorageGroupListQueryFilter)">
+            <summary>
+            Get the list
+            </summary>
+            <param name="queryFilter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageGroupController.CreateGroup(System.Int32,System.String)">
+            <summary>
+            Create
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageGroupController.DeleteGroup(System.String)">
+            <summary>
+            Delete group
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageGroupController.TransformGroup(System.String)">
+            <summary>
+            Transform group
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageGroupController.GetDetails(System.String)">
+            <summary>
+            PID info
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageGroupController.getStorageLabelsForGIDs(System.String[])">
+            <summary>
+            Get PIDs labels
+            </summary>
+            <param name="gids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.StorageGroupController.getGroupLabels(System.String[])">
+            <summary>
+            Get PIDs labels
+            </summary>
+            <param name="gids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.SupplierMastersController.List(System.String)">
+            <summary>
+            Get supplier master simplified object
+            </summary>
+            <param name="factoryId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.UsersController.GetUsersList(TT.Core.QueryFilters.UserListQueryFilter)">
+            <summary>
+            Get list of users
+            </summary>
+            <param name="queryFilter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.UsersController.GetUser(System.String)">
+            <summary>
+            Get user details for code
+            </summary>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.UsersController.PatchUser(System.String,TT.Services.Models.UserUpdateDto)">
+            <summary>
+            Update user
+            </summary>
+            <param name="code"></param>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.UsersController.CreateUser(TT.Services.Models.UserAddDto)">
+            <summary>
+            Create user
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.UsersController.ToggleStatus(System.String)">
+            <summary>
+            Activate/Deactivate user
+            </summary>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.UsersController.GetUserReport">
+            <summary>
+            get user report pdf
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.WarehousesController.Get">
+            <summary>
+            Get list of active warehouses
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.Controllers.WarehousesController.GetLocations(System.String)">
+            <summary>
+            Get list of locations for warehouse
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.AccessLockController.TryLock(System.String,System.String,System.String)">
+            <summary>
+            Cancel inbound
+            </summary>
+            <param name="jobNo"></param>
+            <param name="moduleName"></param>
+            <param name="clientId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.AccessLockController.GetLock(System.String)">
+            <summary>
+            Cancel inbound
+            </summary>
+            <param name="jobNo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.AccessLockController.TryUnlock(System.String,System.String)">
+            <summary>
+            Cancel inbound
+            </summary>
+            <param name="jobNo"></param>
+            <param name="clientId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.AuthController.GetCurrentUserWithRoles">
+            <summary>
+            Get current user and corresponding roles list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.AuthController.Login(TT.Services.Models.AuthRequestDto)">
+            <summary>
+            Login
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TT.Controllers.VersionController.GetCurrentVersion">
+            <summary>
+            Get current user and corresponding roles list
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

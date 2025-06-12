@@ -1,0 +1,69 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+trigger:
+  - master
+  
+pool:
+  vmImage: 'windows-2019'
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSource: 'spec'
+    versionSpec: '16.x'
+- task: MSBuild@1
+  displayName: build ReportWrapper
+  inputs:
+    solution: './ReportWrapper/*.csproj' 
+    configuration: $(BuildConfiguration)
+    msbuildArguments: '/restore'
+- task: PowerShell@2
+  displayName: update version
+  inputs:
+    targetType: 'inline'
+    script: |
+      New-Item ./App/ClientApp/.env.local
+      Set-Content ./App/ClientApp/.env.local "VUE_APP_COMMIT_HASH=$(Build.SourceVersion)"
+      $xml = [Xml] (Get-Content ./App/App.csproj)
+      $version = ($xml.Project.PropertyGroup.Version | Out-String).ToString().Trim()
+      Set-Content ./App/ClientApp/src/app_version.js "export default '${version}'"
+- task: DotNetCoreCLI@2
+  displayName: dotnet publish
+  inputs:
+    workingDirectory: ./App
+    command: publish
+    publishWebProjects: True
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: False
+- task: DotNetCoreCLI@2
+  displayName: run tests
+  inputs:
+    command: test
+    projects: '**/*Tests/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+- task: PublishPipelineArtifact@1
+  displayName: publish arifacts - application
+  inputs:
+    targetPath: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'ttlogix-web'
+- task: PublishPipelineArtifact@1
+  displayName: publish arifacts - migrations
+  inputs:
+    targetPath: ./DB/Migratons
+    artifactName: 'ttlogix-migrations'
+- task: PublishPipelineArtifact@1
+  displayName: publish arifacts - migrationscripts
+  inputs:
+    targetPath: ./DB/Scripts
+    artifactName: 'scripts'
+- task: PublishPipelineArtifact@1
+  displayName: publish arifacts - config
+  inputs:
+    targetPath: ./config
+    artifactName: 'config'

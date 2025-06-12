@@ -1,0 +1,1 @@
+create table negative_inv_logs (query nvarchar(max), app_name nvarchar(max), hostname nvarchar(max), timestamp DATETIME);
