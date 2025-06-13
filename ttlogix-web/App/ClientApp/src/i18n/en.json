@@ -117,6 +117,7 @@
     "doYouWantToCancelJobNo": "Do you really want to cancel job no: {jobNo}?",
     "doYouWantToUpdateStatusBeforeClose": "Do you want to update status before close?",
     "doYouWantToUndoPutaway": "Do you want to undo putaway for the selected PIDs?",
+    "doYouWantToDeleteTheseEKanbanOrders": "Do you really want to delete the following orders?",
     "general": {
       "save": "Save",
       "add": "Add",
@@ -482,7 +483,8 @@
       "batchAllocationInfo": "Batch allocation in progress",
       "batchDeallocationInfo": "Batch deallocation in progress",
       "allocating": "Allocating",
-      "deallocating": "Deallocating"
+      "deallocating": "Deallocating",
+      "cancelEKanban": "Detete EKanban"
     },
     "columns": {
       "jobno": "Job No",
@@ -964,6 +966,7 @@
   "success": {
     "Done": "Done",
     "OrdersAdded": "Orders added successfuly",
+    "OrdersDeleted": "Orders have been deleted",
     "JobCancelled": "Job has been cancelled",
     "JobConfirmed": "Job has been confirmed",
     "Saved": "Changes saved",

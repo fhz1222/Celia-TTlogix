@@ -43,6 +43,9 @@
                 <div v-if="progress.total > 0">
                     {{progress.done}} / {{progress.total}}
                 </div>
+                <button :disabled="isCheckDisabled || progress.total > 0" class="button small" type="button" @click.stop="cancelEkanban()">
+                    {{$t('outbound.operation.cancelEKanban')}}
+                </button>
                 <button :disabled="isCheckDisabled || progress.total > 0" class="button small" type="button" @click.stop="check()">
                     {{$t('outbound.operation.check')}}
                 </button>
@@ -55,6 +58,7 @@
             </template>
         </modal>
         <e-kanban-check-feature v-if="modal != null && modal.type == 'ekanbancheck'" :eKanbans="modal.eKanbans" @close="modal=null" @closeall="modal=null; $emit('close')" />
+        <cancel-e-kanban-feature v-if="modal != null && modal.type == 'cancelEKanban'" :eKanbans="modal.eKanbans" @done="reload" @close="modal = null" />
     </div>
 </template>
 <script>
@@ -64,6 +68,7 @@
     import EKanbanCheckFeature from './EKanbanCheck.vue'
     import { defineComponent } from 'vue';
     import DatePicker from '@/widgets/DatePicker';
+    import CancelEKanbanFeature from './CancelEKanban.vue';
 export default defineComponent({
         props: {
             transType: {
@@ -73,7 +78,7 @@ export default defineComponent({
         created() {
             this.load()
         },
-        components: { DynamicTable, DateTime, EKanbanCheckFeature,DatePicker },
+        components: { DynamicTable, DateTime, EKanbanCheckFeature, DatePicker, CancelEKanbanFeature },
         data() {
             let manualType = 1
             switch (this.transType) {
@@ -202,6 +207,17 @@ export default defineComponent({
             },
             evaluateSelected() {
                 this.isCheckDisabled = this.$refs.table.selection.length == 0 ? true : false;
+            },
+            reload() {
+                if (this.$refs.table && this.$refs.table.load) {
+                    this.$refs.table.load();
+                    console.log('EKanban reload compelted'); 
+                }
+            },
+            cancelEkanban() {
+                let orders = []
+                this.$refs.table.selection.forEach(o => orders.push(o))
+                this.modal = { type: "cancelEKanban", eKanbans: orders };
             }
         }
     })

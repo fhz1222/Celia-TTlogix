@@ -26,5 +26,9 @@ namespace TT.Services.Interfaces
         Task<Result<Tuple<SupplierMaster, IEnumerable<EKanbanDetailDistinctProductCodeQueryResult>>>> GetSupplierMasterForEKanbanImport(
             string orderNo, string factoryId, string instruction);
         Task<Result<IEnumerable<EKanbanPartsStatusDto>>> EKanbanCheck(IEnumerable<string> orderNos);
+
+        Task<Result<bool>> CancelEKanbans(IEnumerable<string> orderNos);
+
+
     }
 }

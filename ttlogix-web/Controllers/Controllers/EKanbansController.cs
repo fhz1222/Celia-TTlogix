@@ -8,6 +8,7 @@ using TT.Controllers.Extensions;
 using TT.Core.QueryFilters;
 using TT.Services.Interfaces;
 using TT.Services.Models;
+using TT.Services.Services;
 using TT.Services.Services.Utilities;
 
 namespace TT.Controllers.Controllers
@@ -168,5 +169,13 @@ namespace TT.Controllers.Controllers
         }
 
         private readonly IEKanbanService eKanbanService;
+
+        [HttpPost]
+        [Route("cancelEKanbans")]
+        public async Task<ActionResult> CancelEKanbans(OrderNosDto data)
+        {
+            if (ModelState.IsInvalid()) { return ValidationProblem(ModelState); }
+            return FromResult(await eKanbanService.CancelEKanbans(data.OrderNos));
+        }
     }
 }

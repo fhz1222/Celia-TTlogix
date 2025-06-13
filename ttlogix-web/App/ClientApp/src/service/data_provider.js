@@ -904,6 +904,15 @@ class DataProvider {
                     self.errorHandlers.simple(err)
                     throw err
                 }
+            },
+            async cancelEKanbans(orderNos) {
+                try {
+                    return (await self.apiAxios.post(`${ekanbansUrl}/cancelEKanbans`, { orderNos: orderNos })).data
+                }
+                catch (err) {
+                    self.errorHandlers.simple(err)
+                    throw err
+                }
             }
         }
         const supplierMastersUrl = 'supplierMasters'

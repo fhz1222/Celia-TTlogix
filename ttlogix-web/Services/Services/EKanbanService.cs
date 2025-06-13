@@ -704,6 +704,26 @@ FROM            EKANBANHeader AS EH INNER JOIN
             return new SuccessResult<IEnumerable<EKanbanPartsStatusDto>>(data);
         }
 
+        public async Task<Result<bool>> CancelEKanbans(IEnumerable<string> orderNos)
+        {
+            return await WithTransactionScope<bool>(async () =>
+
+            {
+                foreach (var orderNo in orderNos)
+                {
+                    var header = await repository.GetEKanbanHeaderAsync(orderNo);
+
+                    header.Status = (int)EKanbanStatus.Cancelled;
+   
+                    await repository.SaveChangesAsync();
+                }
+
+                return new SuccessResult<bool>(true);
+            });
+        }
+
+
+
         private async Task<IEnumerable<string>> GetEKanbanForVMISuppliers(string orderNo)
         {
             return await (from detail in repository.EKanbanDetails()
