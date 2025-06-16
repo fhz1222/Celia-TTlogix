@@ -1,2 +1,0 @@
-insert into TT_SystemModule (code, parentcode, modulename, shortname) values('MDL150700000000', 'MDL150000000000', 'LOADINGDISPATCH', 'DISPATCH');
-insert into TT_AccessRight (GroupCode, ModuleCode, Status) values('GRP0001', 'MDL150700000000', 1);

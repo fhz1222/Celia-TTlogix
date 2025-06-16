@@ -1,1 +1,0 @@
-ALTER TABLE ASNHeader ADD ExpiryDate datetime NOT NULL;

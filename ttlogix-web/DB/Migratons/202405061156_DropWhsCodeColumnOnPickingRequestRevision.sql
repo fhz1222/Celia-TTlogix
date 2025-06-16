@@ -1,1 +1,0 @@
-ALTER TABLE dbi.iLogPickingRequestRevision DROP COLUMN WHSCode;

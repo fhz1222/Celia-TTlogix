@@ -1,4 +1,0 @@
-IF NOT EXISTS (SELECT * FROM syscolumns
-  WHERE ID=OBJECT_ID('[dbo].[TT_PartMaster]') AND NAME='DoNotSyncEDI')
-  ALTER TABLE TT_PartMaster ADD DoNotSyncEDI bit NOT NULL DEFAULT 0
-GO
